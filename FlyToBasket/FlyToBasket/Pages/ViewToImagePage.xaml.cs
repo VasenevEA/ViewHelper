@@ -13,6 +13,7 @@ namespace FlyToBasket.Pages
         public ViewToImagePage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
         protected override void OnAppearing()
         {

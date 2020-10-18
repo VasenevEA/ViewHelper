@@ -3,43 +3,72 @@
     x:Class="FlyToBasket.Pages.AddToBasketPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:col="clr-namespace:System.Collections;assembly=mscorlib">
+    xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <ListView
-            HasUnevenRows="True"
-            SelectionMode="None"
-            SeparatorVisibility="None">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ContentView Margin="10">
-                            <Frame BackgroundColor="#2196F3" CornerRadius="20">
-                                <StackLayout Orientation="Horizontal">
-                                    <Label
-                                        Text="{Binding .}"
-                                        TextColor="White"
-                                        VerticalOptions="CenterAndExpand" />
-                                    <Button
-                                        BackgroundColor="White"
-                                        Clicked="AddToBasket"
-                                        CornerRadius="20"
-                                        HorizontalOptions="EndAndExpand"
-                                        Text="Add"
-                                        VerticalOptions="CenterAndExpand" />
-                                </StackLayout>
-                            </Frame>
-                        </ContentView>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemsSource>
-                <col:ArrayList>
-                    <x:String>Item 1</x:String>
-                    <x:String>Item 2</x:String>
-                    <x:String>Item 3</x:String>
-                    <x:String>Item 4</x:String>
-                </col:ArrayList>
-            </ListView.ItemsSource>
-        </ListView>
+        <AbsoluteLayout x:Name="absoluteLayout">
+            <ListView
+                Margin="0"
+                HasUnevenRows="True"
+                SelectionMode="None"
+                SeparatorVisibility="None">
+                <ListView.Header>
+                    <StackLayout
+                        Margin="0"
+                        Padding="10"
+                        BackgroundColor="#2196F3"
+                        HeightRequest="60"
+                        Orientation="Horizontal">
+                        <Label
+                            x:Name="basket"
+                            FontSize="20"
+                            HorizontalOptions="EndAndExpand"
+                            Text="basket"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            FontSize="20"
+                            HorizontalOptions="End"
+                            Text="{Binding Counter}"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ContentView Margin="10">
+                                <Frame
+                                    BackgroundColor="#31A6FF"
+                                    BorderColor="Red"
+                                    CornerRadius="20">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            Text="{Binding .}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Button
+                                            BackgroundColor="White"
+                                            Clicked="AddToBasket"
+                                            CornerRadius="20"
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="Add"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </StackLayout>
+                                </Frame>
+                            </ContentView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemsSource>
+                    <col:ArrayList>
+                        <x:String>Item 1</x:String>
+                        <x:String>Item 2</x:String>
+                        <x:String>Item 3</x:String>
+                        <x:String>Item 4</x:String>
+                    </col:ArrayList>
+                </ListView.ItemsSource>
+            </ListView>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
