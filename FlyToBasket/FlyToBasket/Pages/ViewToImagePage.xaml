@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FlyToBasket.Pages.ViewToImagePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Frame
+                x:Name="frame"
+                Padding="24"
+                BackgroundColor="#2196F3"
+                CornerRadius="30">
+                <Label
+                    x:Name="label"
+                    FontSize="14"
+                    HorizontalTextAlignment="Center"
+                    TextColor="White" />
+            </Frame>
+            <Button Clicked="Button_Clicked" Text="Click to make a copy" />
+            <Image x:Name="image" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

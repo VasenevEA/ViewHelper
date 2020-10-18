@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FlyToBasket.Pages.AddToBasketPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:col="clr-namespace:System.Collections;assembly=mscorlib">
+    <ContentPage.Content>
+        <ListView
+            HasUnevenRows="True"
+            SelectionMode="None"
+            SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ContentView Margin="10">
+                            <Frame BackgroundColor="#2196F3" CornerRadius="20">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        Text="{Binding .}"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Button
+                                        BackgroundColor="White"
+                                        Clicked="AddToBasket"
+                                        CornerRadius="20"
+                                        HorizontalOptions="EndAndExpand"
+                                        Text="Add"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsSource>
+                <col:ArrayList>
+                    <x:String>Item 1</x:String>
+                    <x:String>Item 2</x:String>
+                    <x:String>Item 3</x:String>
+                    <x:String>Item 4</x:String>
+                </col:ArrayList>
+            </ListView.ItemsSource>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
