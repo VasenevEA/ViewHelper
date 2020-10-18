@@ -18,9 +18,14 @@ namespace FlyToBasket.Pages
 
         private async void AddToBasket(object sender, EventArgs e)
         {
-            var frame = (sender as Button)?.Parent.Parent as Frame;
-            if (frame == null)
+            var element = (sender as Element);
+            while (element.Parent != null && !(element is Frame))
+                element = element.Parent;
+
+            if (element == null)
                 return;
+
+            var frame = element as Frame;
 
             var framePosition = CrossViewHelper.Current.GetCoordinates(frame);
             var frameImageData = CrossViewHelper.Current.GetImage(frame);
@@ -31,7 +36,7 @@ namespace FlyToBasket.Pages
             {
                 Scale = 0.9,
                 TranslationX = framePosition.X,
-                TranslationY = framePosition.Y-20,
+                TranslationY = framePosition.Y - 20,
                 Source = ImageSource.FromStream(() => new MemoryStream(frameImageData))
             };
 
@@ -39,7 +44,7 @@ namespace FlyToBasket.Pages
 
             absoluteLayout.Children.Add(image);
 
-            await image.TranslateTo(basketPosition.X - image.Width* targetScale, basket.Y - image.Height* targetScale);
+            await image.TranslateTo(basketPosition.X - image.Width * targetScale, basket.Y - image.Height * targetScale);
             await image.ScaleTo(targetScale);
 
             absoluteLayout.Children.Remove(image);

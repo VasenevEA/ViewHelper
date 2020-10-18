@@ -4,15 +4,15 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+    x:Name="page"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <AbsoluteLayout x:Name="absoluteLayout">
-            <ListView
-                Margin="0"
-                HasUnevenRows="True"
-                SelectionMode="None"
-                SeparatorVisibility="None">
-                <ListView.Header>
+            <CollectionView Margin="0" SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.Header>
                     <StackLayout
                         Margin="0"
                         Padding="10"
@@ -33,42 +33,61 @@
                             TextColor="White"
                             VerticalOptions="CenterAndExpand" />
                     </StackLayout>
-                </ListView.Header>
-                <ListView.ItemTemplate>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <ContentView Margin="10">
-                                <Frame
-                                    BackgroundColor="#31A6FF"
-                                    BorderColor="Red"
-                                    CornerRadius="20">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label
-                                            Text="{Binding .}"
-                                            TextColor="White"
-                                            VerticalOptions="CenterAndExpand" />
-                                        <Button
-                                            BackgroundColor="White"
-                                            Clicked="AddToBasket"
-                                            CornerRadius="20"
-                                            HorizontalOptions="EndAndExpand"
-                                            Text="Add"
-                                            VerticalOptions="CenterAndExpand" />
-                                    </StackLayout>
-                                </Frame>
-                            </ContentView>
-                        </ViewCell>
+                        <ContentView Padding="10">
+                            <Frame
+                                x:Name="frame"
+                                Padding="0"
+                                BackgroundColor="#31A6FF"
+                                BorderColor="Red"
+                                CornerRadius="20"
+                                IsClippedToBounds="True">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                        Grid.RowSpan="2"
+                                        Aspect="AspectFill"
+                                        Source="https://picsum.photos/seed/we/200/300" />
+                                    <Label
+                                        Padding="10"
+                                        FontSize="20"
+                                        Text="{Binding .}"
+                                        TextColor="White"
+                                        VerticalOptions="Start" />
+                                    <Button
+                                        Grid.Row="1"
+                                        Margin="10"
+                                        BackgroundColor="White"
+                                        Clicked="AddToBasket"
+                                        CornerRadius="20"
+                                        HeightRequest="40"
+                                        HorizontalOptions="EndAndExpand"
+                                        Text="Add"
+                                        VerticalOptions="CenterAndExpand" />
+                                </Grid>
+                            </Frame>
+                        </ContentView>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.ItemsSource>
+                </CollectionView.ItemTemplate>
+                <CollectionView.ItemsSource>
                     <col:ArrayList>
                         <x:String>Item 1</x:String>
                         <x:String>Item 2</x:String>
                         <x:String>Item 3</x:String>
-                        <x:String>Item 4</x:String>
+                        <x:String>Item 5</x:String>
+                        <x:String>Item 6</x:String>
+                        <x:String>Item 7</x:String>
+                        <x:String>Item 8</x:String>
+                        <x:String>Item 9</x:String>
+                        <x:String>Item 10</x:String>
                     </col:ArrayList>
-                </ListView.ItemsSource>
-            </ListView>
+                </CollectionView.ItemsSource>
+            </CollectionView>
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
